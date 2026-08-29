@@ -1,0 +1,15 @@
+{
+  "name": "Hopeful Hearts Ltd",
+  "short_name": "Hopeful Hearts",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf6f0",
+  "theme_color": "#1f1053",
+  "icons": [
+    {
+      "src": "/assets/hopeful-hearts-mark.png",
+      "sizes": "375x375",
+      "type": "image/png"
+    }
+  ]
+}
