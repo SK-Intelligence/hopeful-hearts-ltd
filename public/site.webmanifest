@@ -7,8 +7,13 @@
   "theme_color": "#1f1053",
   "icons": [
     {
-      "src": "/assets/hopeful-hearts-mark.png",
-      "sizes": "375x375",
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]

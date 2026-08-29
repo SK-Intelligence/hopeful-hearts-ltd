@@ -205,7 +205,11 @@ function layout({ route, title, description, body }) {
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="${canonical}">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="icon" href="/assets/hopeful-hearts-mark.png" type="image/png">
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_IE">
   <meta property="og:site_name" content="Hopeful Hearts Ltd">
