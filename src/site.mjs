@@ -635,7 +635,6 @@ function contactPage() {
             <div class="field"><label for="email">Email address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" required aria-describedby="email-error"><p class="field-error" id="email-error"></p></div>
             <div class="field"><label for="message">Message <span aria-hidden="true">*</span></label><textarea id="message" name="message" rows="7" required aria-describedby="message-hint message-error"></textarea><p class="field-hint" id="message-hint">Please do not include sensitive personal or medical information.</p><p class="field-error" id="message-error"></p></div>
             <button class="button button-primary submit-button" type="submit">Submit enquiry</button>
-            <p class="form-note">This local website validates your enquiry but does not transmit it. A secure form endpoint must be connected before launch.</p>
             <div class="form-status" role="status" aria-live="polite" tabindex="-1" data-form-status></div>
           </form>
         </div>

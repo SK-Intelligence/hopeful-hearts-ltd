@@ -87,7 +87,9 @@ if (form) {
     });
   });
 
-  form.addEventListener("submit", (event) => {
+  const WEB3FORMS_ACCESS_KEY = "145c4f30-bd36-4799-a66d-678c487b1326";
+
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const valid = fields.map(validateField).every(Boolean);
 
@@ -99,16 +101,44 @@ if (form) {
 
     const submitButton = form.querySelector("button[type='submit']");
     submitButton.disabled = true;
-    submitButton.textContent = "Checking enquiry…";
+    submitButton.textContent = "Sending enquiry…";
     formStatus.textContent = "";
 
-    window.setTimeout(() => {
+    const data = new FormData(form);
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Website enquiry from ${firstName} ${lastName}`,
+          from_name: `${firstName} ${lastName}`,
+          email,
+          message,
+        }),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (response.ok && result.success) {
+        form.reset();
+        formStatus.textContent = "Thank you — your enquiry has been sent. We'll be in touch soon.";
+      } else {
+        formStatus.textContent =
+          "Sorry, we could not send your enquiry. Please email info@hopefulheartsltd.com or call +353 87 277 9096.";
+      }
+    } catch {
+      formStatus.textContent =
+        "Sorry, we could not send your enquiry. Please email info@hopefulheartsltd.com or call +353 87 277 9096.";
+    } finally {
       submitButton.disabled = false;
       submitButton.textContent = "Submit enquiry";
-      formStatus.textContent =
-        "Your details are valid, but this local build cannot send them yet. Please email info@hopefulheartsltd.com or call +353 87 277 9096.";
       formStatus.focus();
-    }, 300);
+    }
   });
 
   window.addEventListener("beforeunload", (event) => {
