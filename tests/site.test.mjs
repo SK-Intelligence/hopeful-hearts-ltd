@@ -34,6 +34,7 @@ test("navigation and contact facts remain consistent", () => {
     assert.match(html, /\+353 87 277 9096/);
     assert.match(html, /info@hopefulheartsltd\.com/);
     assert.match(html, /hopefulheartsscs@gmail\.com/);
+    assert.match(html, /hr@hopefulheartsltd\.com/);
     assert.match(html, /21 Lakeview, The Fair Green, Cavan, H12 DX93/);
   }
 });

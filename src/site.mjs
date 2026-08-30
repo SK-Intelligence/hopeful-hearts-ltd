@@ -182,6 +182,7 @@ function footer() {
           <li><a href="tel:${contact.phoneHref}">${contact.phoneDisplay}</a></li>
           <li><a href="mailto:${contact.primaryEmail}">${contact.primaryEmail}</a></li>
           <li><a href="mailto:${contact.secondaryEmail}">${contact.secondaryEmail}</a></li>
+          <li><a href="mailto:${contact.agencyEmail}">${contact.agencyEmail}</a></li>
           <li><address>${contact.address}</address></li>
         </ul>
       </div>
@@ -713,6 +714,7 @@ function contactPage() {
           <dl>
             <div><dt>Telephone</dt><dd><a href="tel:${contact.phoneHref}">${contact.phoneDisplay}</a></dd></div>
             <div><dt>Email</dt><dd><a href="mailto:${contact.primaryEmail}">${contact.primaryEmail}</a><a href="mailto:${contact.secondaryEmail}">${contact.secondaryEmail}</a></dd></div>
+            <div><dt>Agency enquiries</dt><dd><a href="mailto:${contact.agencyEmail}">${contact.agencyEmail}</a></dd></div>
             <div><dt>Address</dt><dd><address>${contact.address}</address></dd></div>
             <div><dt>Availability</dt><dd>${contact.availability}</dd></div>
           </dl>
