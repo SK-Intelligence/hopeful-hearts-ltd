@@ -16,6 +16,7 @@ const mapDestination = encodeURIComponent("H12 DX93, Ireland");
 const mapEmbedUrl = `https://maps.google.com/maps?hl=en&amp;q=${mapDestination}&amp;z=17&amp;output=embed`;
 const directionsUrl = `https://www.google.com/maps/dir/?api=1&amp;destination=${mapDestination}&amp;travelmode=driving`;
 const whatsappUrl = `https://wa.me/353872779096?text=${encodeURIComponent("Hello Hopeful Hearts, I would like to make an enquiry.")}`;
+const awardUrl = "https://www.eubusinessnews.com/winners/hopeful-hearts-ltd/";
 
 const navigation = [
   ["/", "Home"],
@@ -352,6 +353,30 @@ function homePage() {
           <blockquote>“We all need somebody to believe in us.”</blockquote>
           <div class="connection-motif" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section award-recognition" aria-labelledby="award-title">
+      <div class="container award-layout">
+        <div class="award-copy">
+          <p class="award-kicker"><span aria-hidden="true"></span>Recognised in 2026</p>
+          <h2 id="award-title">National recognition for Hopeful Hearts Ltd.</h2>
+          <p class="award-lead">Hopeful Hearts Ltd was named <strong>Best Family Reconciliation &amp; Community Support Service 2026 – Ulster</strong> in the Irish Enterprise Awards 2026, presented by EU Business News.</p>
+          <p class="award-note">This recognition reflects the work being done to support separated families, strengthen community ties and create pathways towards reconciliation and stability.</p>
+          <div class="button-row award-actions">
+            <a class="button button-award" href="${awardUrl}" target="_blank" rel="noopener noreferrer">View award <span class="sr-only">(opens in a new tab)</span></a>
+            <a class="button button-outline-light" href="/contact/">Contact Hopeful Hearts</a>
+          </div>
+          <p class="award-source">Irish Enterprise Awards 2026 <span aria-hidden="true">·</span> EU Business News <span aria-hidden="true">·</span> Ulster</p>
+        </div>
+        <article class="award-emblem" aria-label="2026 award winner">
+          <div class="award-medal" aria-hidden="true">
+            <span>2026</span>
+            <small>Award winner</small>
+          </div>
+          <h3>Best Family Reconciliation &amp; Community Support Service</h3>
+          <p>Recognised in Ulster for family support, community impact and reconciliation work.</p>
+        </article>
       </div>
     </section>
 

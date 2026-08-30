@@ -97,6 +97,11 @@ test("brand identity stays aligned with the supplied Hopeful Hearts mark", async
 
 test("services and FAQs preserve the verified content inventory", () => {
   const home = pages["/"];
+  const awardUrl = "https://www.eubusinessnews.com/winners/hopeful-hearts-ltd/";
+  assert.match(home, /National recognition for Hopeful Hearts Ltd/);
+  assert.match(home, /Best Family Reconciliation &amp; Community Support Service 2026 – Ulster/);
+  assert.match(home, new RegExp(`href="${awardUrl}" target="_blank" rel="noopener noreferrer"`));
+  assert.ok(home.indexOf("award-recognition") < home.indexOf('id="services"'));
   assert.match(home, /id="services"/);
   assert.match(home, /What each service involves/);
   assert.match(home, /Agency Staffing &amp; Resident Transport/);
