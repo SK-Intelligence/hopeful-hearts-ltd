@@ -101,7 +101,10 @@ test("services and FAQs preserve the verified content inventory", () => {
   assert.match(home, /National recognition for Hopeful Hearts Ltd/);
   assert.match(home, /Best Family Reconciliation &amp; Community Support Service 2026 – Ulster/);
   assert.match(home, new RegExp(`href="${awardUrl}" target="_blank" rel="noopener noreferrer"`));
-  assert.ok(home.indexOf("award-recognition") < home.indexOf('id="services"'));
+  assert.match(home, /Family support, agency staffing &amp; resident transport services/);
+  assert.ok(!home.includes("Family support &amp; social care in Cavan"));
+  assert.ok(home.indexOf("award-recognition") > home.indexOf("partner-section"));
+  assert.ok(home.indexOf("award-recognition") < home.indexOf("contact-cta section"));
   assert.match(home, /id="services"/);
   assert.match(home, /What each service involves/);
   assert.match(home, /Agency Staffing &amp; Resident Transport/);

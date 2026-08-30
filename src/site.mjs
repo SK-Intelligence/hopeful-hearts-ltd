@@ -328,16 +328,42 @@ function homeServiceDetails() {
   </div>`;
 }
 
+function awardRecognition() {
+  return `<section class="section award-recognition" aria-labelledby="award-title">
+    <div class="container award-layout">
+      <div class="award-copy">
+        <p class="award-kicker"><span aria-hidden="true"></span>Recognised in 2026</p>
+        <h2 id="award-title">National recognition for Hopeful Hearts Ltd.</h2>
+        <p class="award-lead">Hopeful Hearts Ltd was named <strong>Best Family Reconciliation &amp; Community Support Service 2026 – Ulster</strong> in the Irish Enterprise Awards 2026, presented by EU Business News.</p>
+        <p class="award-note">This recognition reflects the work being done to support separated families, strengthen community ties and create pathways towards reconciliation and stability.</p>
+        <div class="button-row award-actions">
+          <a class="button button-award" href="${awardUrl}" target="_blank" rel="noopener noreferrer">View award <span class="sr-only">(opens in a new tab)</span></a>
+          <a class="button button-outline-light" href="/contact/">Contact Hopeful Hearts</a>
+        </div>
+        <p class="award-source">Irish Enterprise Awards 2026 <span aria-hidden="true">·</span> EU Business News <span aria-hidden="true">·</span> Ulster</p>
+      </div>
+      <article class="award-emblem" aria-label="2026 award winner">
+        <div class="award-medal" aria-hidden="true">
+          <span>2026</span>
+          <small>Award winner</small>
+        </div>
+        <h3>Best Family Reconciliation &amp; Community Support Service</h3>
+        <p>Recognised in Ulster for family support, community impact and reconciliation work.</p>
+      </article>
+    </div>
+  </section>`;
+}
+
 function homePage() {
   return layout({
     route: "/",
-    title: "Hopeful Hearts | Family Support & Social Care in Cavan",
+    title: "Hopeful Hearts | Family Support, Agency Staffing & Transport",
     description:
       "Hopeful Hearts Ltd provides family support, supervised access, outreach, agency relief staffing and resident transport services.",
     body: `<section class="home-hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Family support &amp; social care in Cavan</p>
+          <p class="eyebrow">Family support, agency staffing &amp; resident transport services</p>
           <h1>Restoring hope.<br><em>Supporting families.</em></h1>
           <p class="hero-lead">Hopeful Hearts Ltd focuses on reuniting families and empowering vulnerable individuals with safe, person-centred support.</p>
           <div class="button-row">
@@ -353,30 +379,6 @@ function homePage() {
           <blockquote>“We all need somebody to believe in us.”</blockquote>
           <div class="connection-motif" aria-hidden="true"><span></span><span></span><span></span></div>
         </div>
-      </div>
-    </section>
-
-    <section class="section award-recognition" aria-labelledby="award-title">
-      <div class="container award-layout">
-        <div class="award-copy">
-          <p class="award-kicker"><span aria-hidden="true"></span>Recognised in 2026</p>
-          <h2 id="award-title">National recognition for Hopeful Hearts Ltd.</h2>
-          <p class="award-lead">Hopeful Hearts Ltd was named <strong>Best Family Reconciliation &amp; Community Support Service 2026 – Ulster</strong> in the Irish Enterprise Awards 2026, presented by EU Business News.</p>
-          <p class="award-note">This recognition reflects the work being done to support separated families, strengthen community ties and create pathways towards reconciliation and stability.</p>
-          <div class="button-row award-actions">
-            <a class="button button-award" href="${awardUrl}" target="_blank" rel="noopener noreferrer">View award <span class="sr-only">(opens in a new tab)</span></a>
-            <a class="button button-outline-light" href="/contact/">Contact Hopeful Hearts</a>
-          </div>
-          <p class="award-source">Irish Enterprise Awards 2026 <span aria-hidden="true">·</span> EU Business News <span aria-hidden="true">·</span> Ulster</p>
-        </div>
-        <article class="award-emblem" aria-label="2026 award winner">
-          <div class="award-medal" aria-hidden="true">
-            <span>2026</span>
-            <small>Award winner</small>
-          </div>
-          <h3>Best Family Reconciliation &amp; Community Support Service</h3>
-          <p>Recognised in Ulster for family support, community impact and reconciliation work.</p>
-        </article>
       </div>
     </section>
 
@@ -443,6 +445,7 @@ function homePage() {
         <div class="partner-card"><span>Our partner</span><img class="partner-logo" src="/assets/tusla-logo.png" alt="Tusla — An Ghníomhaireacht um Leanaí agus an Teaghlach, Child and Family Agency" width="484" height="484" loading="lazy"></div>
       </div>
     </section>
+    ${awardRecognition()}
     ${contactCta()}`,
   });
 }
@@ -692,9 +695,9 @@ function faqAccordion() {
 function contactPage() {
   return layout({
     route: "/contact/",
-    title: "Contact Hopeful Hearts | Family Support in Cavan",
+    title: "Contact Hopeful Hearts | Family Support & Social Care",
     description:
-      "Contact Hopeful Hearts Ltd in Cavan by phone, email or enquiry form, and read answers to frequently asked questions about our support.",
+      "Contact Hopeful Hearts Ltd by phone, email or enquiry form, and read answers to frequently asked questions about our support.",
     body: `<section class="page-hero contact-hero">
       <div class="container page-hero-grid">
         <div><p class="eyebrow">Contact Hopeful Hearts</p><h1>A calm first step starts with a conversation.</h1></div>
