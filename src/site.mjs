@@ -302,27 +302,22 @@ function serviceIndex(items = services, { detailLinks = false } = {}) {
   </ul>`;
 }
 
-function homeServiceDetails() {
-  return `<div class="home-service-detail-list">
+function homeServicesGrid() {
+  return `<div class="home-services-grid">
     ${homeServices
       .map(
-        (service) => `<article class="home-service-detail${service === agencyService ? " home-service-detail--agency" : ""}" id="${service.id}">
-          <div class="home-service-detail-heading">
-            <p class="eyebrow${service === agencyService ? " light" : ""}">${service.category}</p>
-            <h3>${service.name}</h3>
-            <p>${service.copy}</p>
-          </div>
-          <div class="home-service-detail-copy">
-            <p class="detail-label">What this service involves</p>
-            <ul class="service-detail-points">
-              ${service.details.map((detail) => `<li>${detail}</li>`).join("")}
-            </ul>
-            ${
-              service === agencyService
-                ? `<a class="button button-light" href="/agency-services/">Explore agency services</a>`
-                : `<a class="text-link" href="/contact/">Ask about this service <span aria-hidden="true">→</span></a>`
-            }
-          </div>
+        (service) => `<article class="home-service-summary${service === agencyService ? " home-service-summary--agency" : ""}" id="${service.id}">
+          <p class="home-service-category">${service.category}</p>
+          <h3>${service.name}</h3>
+          <p>${service.copy}</p>
+          <ul class="home-service-highlights" aria-label="What this service involves">
+            ${service.details.map((detail) => `<li>${detail}</li>`).join("")}
+          </ul>
+          ${
+            service === agencyService
+              ? `<a class="text-link" href="/agency-services/">Explore agency services <span aria-hidden="true">→</span></a>`
+              : `<a class="text-link" href="/contact/">Ask about this service <span aria-hidden="true">→</span></a>`
+          }
         </article>`,
       )
       .join("")}
@@ -383,60 +378,29 @@ function homePage() {
       </div>
     </section>
 
-    <section class="section services-preview home-services-overview" id="services" aria-labelledby="services-title">
+    <section class="section home-services-section" id="services" aria-labelledby="services-title">
       <div class="container">
         <div class="section-heading split-heading">
-          <div><p class="eyebrow">Our services</p><h2 id="services-title">Support for families, individuals and care organisations.</h2></div>
-          <p>Choose a service for a clear explanation of what it involves, or contact us if you are unsure where to begin.</p>
+          <div><p class="eyebrow">Our services</p><h2 id="services-title">Six areas of practical support.</h2></div>
+          <p>See what each service involves, or contact us if you are unsure where to begin.</p>
         </div>
-        ${serviceIndex(homeServices, { detailLinks: true })}
-      </div>
-    </section>
-
-    <section class="section home-service-details" aria-labelledby="service-details-title">
-      <div class="container">
-        <div class="section-heading narrow-heading">
-          <p class="eyebrow">What each service involves</p>
-          <h2 id="service-details-title">Clear information before you get in touch.</h2>
-        </div>
-        ${homeServiceDetails()}
-      </div>
-    </section>
-
-    <section class="section purpose-section" aria-labelledby="purpose-title">
-      <div class="container editorial-split">
-        <div>
-          <p class="eyebrow">Here to help</p>
-          <h2 id="purpose-title">A safe setting for connection, care and possibility.</h2>
-        </div>
-        <div class="prose-large">
-          <p>Our primary goal is to restore hope to the people who use our services. We provide the possibility of reconciliation for families separated by a range of circumstances.</p>
-          <a class="text-link" href="/about-us/">Learn about Hopeful Hearts <span aria-hidden="true">→</span></a>
-        </div>
+        ${homeServicesGrid()}
       </div>
     </section>
 
     <section class="section approach-section" aria-labelledby="approach-title">
       <div class="container approach-grid">
         <div class="approach-intro">
-          <p class="eyebrow">Our approach</p>
-          <h2 id="approach-title">Professional support, grounded in respect.</h2>
-          <p>We work to create the conditions in which relationships can develop safely and each person can be treated as an individual.</p>
+          <p class="eyebrow">How we work</p>
+          <h2 id="approach-title">A safe setting for connection, care and possibility.</h2>
+          <p>Our goal is to restore hope and create the conditions in which relationships can develop safely, with support shaped around each person’s circumstances.</p>
+          <a class="text-link" href="/about-us/">Learn about Hopeful Hearts <span aria-hidden="true">→</span></a>
         </div>
         <div class="principles">
           <article><span class="principle-mark" aria-hidden="true"></span><h3>Safety first</h3><p>A controlled, nurturing setting supports safe contact and considered care.</p></article>
           <article><span class="principle-mark" aria-hidden="true"></span><h3>Person-centred</h3><p>Support responds to each person’s story, circumstances and assessed needs.</p></article>
           <article><span class="principle-mark" aria-hidden="true"></span><h3>Positive relationships</h3><p>We encourage healthy family bonds and appropriate social and parenting skills.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="section values-teaser" aria-labelledby="values-title">
-      <div class="container values-teaser-inner">
-        <p class="eyebrow">What guides us</p>
-        <h2 id="values-title">Passion. Integrity. Respect.</h2>
-        <p>We put care into our work, act honestly and recognise the dignity and unique journey of every person we support.</p>
-        <a class="text-link" href="/about-us/#values">Read about our values <span aria-hidden="true">→</span></a>
       </div>
     </section>
 

@@ -140,13 +140,12 @@ address {
 .faq-layout > *,
 .important-layout > *,
 .footer-grid > *,
-.agency-teaser-layout > *,
 .agency-hero-grid > *,
 .agency-coverage-layout > *,
 .compliance-layout > *,
 .agency-contact-layout > *,
 .location-layout > *,
-.home-service-detail > *,
+.home-services-grid > *,
 .award-layout > * {
   min-width: 0;
 }
@@ -565,10 +564,6 @@ address {
   border-color: var(--brand-pink);
 }
 
-.purpose-section {
-  background: var(--paper);
-}
-
 .award-recognition {
   --award-gold: #e4bd61;
   --award-gold-light: #fff0c4;
@@ -852,103 +847,94 @@ address {
   text-decoration-color: var(--brand-pink);
 }
 
-.section-end {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 2.5rem;
-}
-
-.home-services-overview {
+.home-services-section {
   scroll-margin-top: 5.25rem;
 }
 
-.home-service-details {
-  background: var(--paper);
+.home-services-section .section-heading {
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-.home-service-detail-list {
-  border-top: 1px solid var(--border);
-}
-
-.home-service-detail {
+.home-services-grid {
   display: grid;
-  grid-template-columns: minmax(17rem, 0.82fr) minmax(0, 1.18fr);
-  gap: clamp(2.5rem, 8vw, 7rem);
-  padding-block: clamp(3rem, 6vw, 5.5rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.home-service-summary {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  padding: clamp(2rem, 4vw, 3.25rem);
+  border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  scroll-margin-top: 6.5rem;
 }
 
-.home-service-detail-heading h3 {
-  max-width: 20ch;
-  margin-bottom: 1rem;
-  font-size: clamp(1.75rem, 3vw, 2.75rem);
-}
-
-.home-service-detail-heading > p:last-child {
-  max-width: 37rem;
-  margin-bottom: 0;
-}
-
-.home-service-detail-copy {
-  align-self: center;
-}
-
-.detail-label {
-  margin-bottom: 1rem;
+.home-service-category {
+  margin-bottom: 0.9rem;
   color: var(--brand-pink-strong);
-  font-size: 0.74rem;
+  font-size: 0.73rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.service-detail-points {
+.home-service-summary h3 {
+  max-width: 23ch;
+  margin-bottom: 0.85rem;
+  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
+}
+
+.home-service-summary > p:not(.home-service-category) {
+  max-width: 39rem;
+  margin-bottom: 1.35rem;
+}
+
+.home-service-highlights {
   padding: 0;
-  margin: 0 0 1.65rem;
+  margin: 0 0 1.5rem;
   list-style: none;
 }
 
-.service-detail-points li {
+.home-service-highlights li {
   position: relative;
-  padding: 0.8rem 0 0.8rem 1.4rem;
-  border-bottom: 1px solid var(--border);
+  padding-left: 1.15rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
-.service-detail-points li:first-child {
-  border-top: 1px solid var(--border);
+.home-service-highlights li + li {
+  margin-top: 0.55rem;
 }
 
-.service-detail-points li::before {
+.home-service-highlights li::before {
   position: absolute;
-  top: 1.45rem;
+  top: 0.58rem;
   left: 0;
-  width: 0.38rem;
-  height: 0.38rem;
+  width: 0.34rem;
+  height: 0.34rem;
   border-radius: 50%;
   background: var(--brand-pink);
   content: "";
 }
 
-.home-service-detail--agency {
-  padding-inline: clamp(1.5rem, 4vw, 4rem);
-  border: 0;
-  border-radius: var(--radius-lg);
-  background: var(--brand-navy-dark);
+.home-service-summary .text-link {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
-.home-service-detail--agency h3,
-.home-service-detail--agency .home-service-detail-heading > p:last-child,
-.home-service-detail--agency .service-detail-points li {
-  color: var(--paper);
+.home-service-summary--agency {
+  background: var(--brand-tint);
 }
 
-.home-service-detail--agency .detail-label {
-  color: var(--brand-pink);
+.home-service-summary--agency h3 {
+  color: var(--brand-navy-dark);
 }
 
-.home-service-detail--agency .service-detail-points li {
-  border-color: rgb(255 255 255 / 0.15);
+.home-service-summary--agency .home-service-category {
+  color: var(--brand-pink-strong);
 }
 
 .approach-section {
@@ -989,59 +975,8 @@ address {
   margin-bottom: 0;
 }
 
-.values-teaser-inner {
-  max-width: 58rem;
-  text-align: center;
-}
-
-.values-teaser .eyebrow {
-  justify-content: center;
-}
-
-.values-teaser h2 {
-  margin-bottom: 1.2rem;
-}
-
-.values-teaser p:not(.eyebrow) {
-  max-width: 42rem;
-  margin: 0 auto 1.5rem;
-  font-size: 1.12rem;
-}
-
 .partner-section {
-  padding-top: 0;
-}
-
-.agency-teaser-section {
-  background: var(--brand-navy);
-}
-
-.agency-teaser-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
-  align-items: end;
-  gap: clamp(2.5rem, 8vw, 8rem);
-}
-
-.agency-teaser-layout h2,
-.agency-teaser-copy p {
-  color: var(--paper);
-}
-
-.agency-teaser-layout h2 {
-  max-width: 16ch;
-  margin-bottom: 0;
-}
-
-.agency-teaser-copy > p {
-  margin-bottom: 1.6rem;
-  color: var(--on-brand-muted);
-  font-size: 1.1rem;
-}
-
-.agency-teaser-copy .button-row {
-  align-items: center;
-  gap: 1rem 1.5rem;
+  background: var(--cream);
 }
 
 .partner-layout {
@@ -2241,13 +2176,12 @@ address {
   .important-layout,
   .faq-layout,
   .contact-layout,
-  .agency-teaser-layout,
   .agency-hero-grid,
   .agency-coverage-layout,
   .compliance-layout,
   .agency-contact-layout,
   .location-layout,
-  .home-service-detail,
+  .home-services-grid,
   .award-layout {
     grid-template-columns: 1fr;
   }
@@ -2409,12 +2343,8 @@ address {
     align-items: start;
   }
 
-  .home-service-detail {
-    gap: 1.75rem;
-  }
-
-  .home-service-detail--agency {
-    padding: 2.5rem 1.5rem;
+  .home-service-summary {
+    padding: 2rem 1.5rem;
   }
 
   .editorial-image-frame::before {
@@ -2515,10 +2445,6 @@ address {
 
   .agency-hero h1 {
     font-size: clamp(2.6rem, 13vw, 3.55rem);
-  }
-
-  .agency-teaser-copy .button-row {
-    align-items: stretch;
   }
 
   .agency-contact-layout {

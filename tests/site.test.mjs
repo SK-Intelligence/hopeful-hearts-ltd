@@ -107,9 +107,13 @@ test("services and FAQs preserve the verified content inventory", () => {
   assert.ok(home.indexOf("award-recognition") > home.indexOf("partner-section"));
   assert.ok(home.indexOf("award-recognition") < home.indexOf("contact-cta section"));
   assert.match(home, /id="services"/);
-  assert.match(home, /What each service involves/);
+  assert.match(home, /Six areas of practical support/);
   assert.match(home, /Agency Staffing &amp; Resident Transport/);
-  assert.equal((home.match(/class="home-service-detail(?: |")/g) ?? []).length, 6);
+  assert.equal((home.match(/class="home-service-summary(?: |")/g) ?? []).length, 6);
+  assert.match(home, /href="\/agency-services\/">Explore agency services/);
+  assert.ok(home.indexOf('id="services"') < home.indexOf("approach-section"));
+  assert.ok(!home.includes("home-service-details"));
+  assert.ok(!home.includes("values-teaser"));
   for (const id of [
     "supervised-family-access",
     "supervised-access-transport",
@@ -117,7 +121,7 @@ test("services and FAQs preserve the verified content inventory", () => {
     "emergency-outreach",
     "other-emergency-support",
     "agency-staffing-transport",
-  ]) assert.match(home, new RegExp(`href="#${id}"`));
+  ]) assert.match(home, new RegExp(`id="${id}"`));
 
   const services = pages["/services/"];
   for (const heading of [
