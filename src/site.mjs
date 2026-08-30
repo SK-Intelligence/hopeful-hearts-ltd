@@ -27,31 +27,77 @@ const navigation = [
 
 const services = [
   {
+    id: "supervised-family-access",
+    category: "Family connection",
     name: "Supervised Family Access Service",
     copy:
       "We facilitate supervised visits between people using our service and their families in a controlled, safe environment.",
+    details: [
+      "Family visits facilitated in a controlled, safe environment.",
+      "Supervision by an adult other than the parent where an access order requires it.",
+      "Support for positive relationships between children and both parents when appropriate.",
+    ],
   },
   {
+    id: "supervised-access-transport",
+    category: "Access support",
     name: "Supervised Access Transport for Children",
     copy:
       "We provide transport for people who would otherwise be unable to attend an arranged family access visit.",
+    details: [
+      "Planned transport connected to an arranged family access visit.",
+      "Practical support for people who would otherwise be unable to attend.",
+    ],
   },
   {
+    id: "community-outreach",
+    category: "Community support",
     name: "Community Outreach Support Service",
     copy:
       "Person-centred community support helps individuals develop appropriate social skills as they take part in their communities.",
+    details: [
+      "Person-centred support shaped around the individual’s needs.",
+      "Opportunities to take part in community life and develop appropriate social skills.",
+    ],
   },
   {
+    id: "emergency-outreach",
+    category: "Urgent support",
     name: "Emergency Outreach Support Service",
     copy:
       "Urgent community support is available for individuals facing sudden, unplanned changes in their circumstances, including at short notice.",
+    details: [
+      "Responsive, community-based support during sudden and unplanned changes.",
+      "Support at short notice while maintaining the quality of the service provided.",
+    ],
   },
   {
+    id: "other-emergency-support",
+    category: "Funder support",
     name: "Other Emergency Support Service",
     copy:
       "We support our funders by providing urgent assistance to children facing sudden, unplanned changes, while maintaining the quality of our service regardless of notice period.",
+    details: [
+      "Urgent assistance for children experiencing sudden, unplanned changes.",
+      "Delivery in partnership with funders and referring organisations, including at short notice.",
+    ],
   },
 ];
+
+const agencyService = {
+  id: "agency-staffing-transport",
+  category: "For care organisations",
+  name: "Agency Staffing &amp; Resident Transport",
+  copy:
+    "HCA and Social Care Worker relief staffing is available across Cavan, Monaghan, Louth and Westmeath, alongside resident appointment transport throughout Ireland.",
+  details: [
+    "Healthcare Assistant and Social Care Worker relief staffing across four regional counties.",
+    "Nationwide resident transport for appointments at hospitals, clinics and specialist medical hubs.",
+    "A digital compliance file checked internally and supplied to the facility before deployment.",
+  ],
+};
+
+const homeServices = [...services, agencyService];
 
 const faqs = [
   {
@@ -237,8 +283,8 @@ function layout({ route, title, description, body }) {
 </html>`;
 }
 
-function serviceIndex(items = services) {
-  return `<ol class="service-index">
+function serviceIndex(items = services, { detailLinks = false } = {}) {
+  return `<ul class="service-index">
     ${items
       .map(
         (service) => `<li>
@@ -247,11 +293,38 @@ function serviceIndex(items = services) {
             <h3>${service.name}</h3>
             <p>${service.copy}</p>
           </div>
-          <a class="service-link" href="/contact/" aria-label="Ask about ${service.name}">Ask about this service <span aria-hidden="true">→</span></a>
+          <a class="service-link" href="${detailLinks ? `#${service.id}` : "/contact/"}" aria-label="${detailLinks ? `See what is involved in ${service.name}` : `Ask about ${service.name}`}">${detailLinks ? "What’s involved" : "Ask about this service"} <span aria-hidden="true">→</span></a>
         </li>`,
       )
       .join("")}
-  </ol>`;
+  </ul>`;
+}
+
+function homeServiceDetails() {
+  return `<div class="home-service-detail-list">
+    ${homeServices
+      .map(
+        (service) => `<article class="home-service-detail${service === agencyService ? " home-service-detail--agency" : ""}" id="${service.id}">
+          <div class="home-service-detail-heading">
+            <p class="eyebrow${service === agencyService ? " light" : ""}">${service.category}</p>
+            <h3>${service.name}</h3>
+            <p>${service.copy}</p>
+          </div>
+          <div class="home-service-detail-copy">
+            <p class="detail-label">What this service involves</p>
+            <ul class="service-detail-points">
+              ${service.details.map((detail) => `<li>${detail}</li>`).join("")}
+            </ul>
+            ${
+              service === agencyService
+                ? `<a class="button button-light" href="/agency-services/">Explore agency services</a>`
+                : `<a class="text-link" href="/contact/">Ask about this service <span aria-hidden="true">→</span></a>`
+            }
+          </div>
+        </article>`,
+      )
+      .join("")}
+  </div>`;
 }
 
 function homePage() {
@@ -259,7 +332,7 @@ function homePage() {
     route: "/",
     title: "Hopeful Hearts | Family Support & Social Care in Cavan",
     description:
-      "Hopeful Hearts Ltd supports families and vulnerable individuals through supervised family access, community outreach, transport and urgent support.",
+      "Hopeful Hearts Ltd provides family support, supervised access, outreach, agency relief staffing and resident transport services.",
     body: `<section class="home-hero">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -267,7 +340,7 @@ function homePage() {
           <h1>Restoring hope.<br><em>Supporting families.</em></h1>
           <p class="hero-lead">Hopeful Hearts Ltd focuses on reuniting families and empowering vulnerable individuals with safe, person-centred support.</p>
           <div class="button-row">
-            <a class="button button-primary" href="/services/">Explore our services</a>
+            <a class="button button-primary" href="#services">See all services</a>
             <a class="button button-secondary" href="/contact/">Get in touch</a>
           </div>
           <p class="hero-contact"><span>Prefer to call?</span> <a href="tel:${contact.phoneHref}">${contact.phoneDisplay}</a></p>
@@ -282,6 +355,26 @@ function homePage() {
       </div>
     </section>
 
+    <section class="section services-preview home-services-overview" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading split-heading">
+          <div><p class="eyebrow">Our services</p><h2 id="services-title">Support for families, individuals and care organisations.</h2></div>
+          <p>Choose a service for a clear explanation of what it involves, or contact us if you are unsure where to begin.</p>
+        </div>
+        ${serviceIndex(homeServices, { detailLinks: true })}
+      </div>
+    </section>
+
+    <section class="section home-service-details" aria-labelledby="service-details-title">
+      <div class="container">
+        <div class="section-heading narrow-heading">
+          <p class="eyebrow">What each service involves</p>
+          <h2 id="service-details-title">Clear information before you get in touch.</h2>
+        </div>
+        ${homeServiceDetails()}
+      </div>
+    </section>
+
     <section class="section purpose-section" aria-labelledby="purpose-title">
       <div class="container editorial-split">
         <div>
@@ -291,33 +384,6 @@ function homePage() {
         <div class="prose-large">
           <p>Our primary goal is to restore hope to the people who use our services. We provide the possibility of reconciliation for families separated by a range of circumstances.</p>
           <a class="text-link" href="/about-us/">Learn about Hopeful Hearts <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section services-preview" aria-labelledby="services-title">
-      <div class="container">
-        <div class="section-heading split-heading">
-          <div><p class="eyebrow">How we can help</p><h2 id="services-title">Support shaped around real family needs.</h2></div>
-          <p>Our services support individuals, families and referring organisations with calm, practical care.</p>
-        </div>
-        ${serviceIndex(services.slice(0, 4))}
-        <div class="section-end"><a class="button button-secondary" href="/services/">View every service</a></div>
-      </div>
-    </section>
-
-    <section class="section agency-teaser-section" aria-labelledby="agency-teaser-title">
-      <div class="container agency-teaser-layout">
-        <div>
-          <p class="eyebrow light">For care organisations</p>
-          <h2 id="agency-teaser-title">Relief staffing and resident transport.</h2>
-        </div>
-        <div class="agency-teaser-copy">
-          <p>Hopeful Hearts also provides HCA and Social Care Worker relief staffing across Cavan, Monaghan, Louth and Westmeath, alongside resident appointment transport throughout Ireland.</p>
-          <div class="button-row">
-            <a class="button button-light" href="/agency-services/">Explore agency services</a>
-            <a class="text-link light-link" href="mailto:${contact.agencyEmail}">Email the agency team <span aria-hidden="true">→</span></a>
-          </div>
         </div>
       </div>
     </section>

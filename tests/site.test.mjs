@@ -96,6 +96,20 @@ test("brand identity stays aligned with the supplied Hopeful Hearts mark", async
 });
 
 test("services and FAQs preserve the verified content inventory", () => {
+  const home = pages["/"];
+  assert.match(home, /id="services"/);
+  assert.match(home, /What each service involves/);
+  assert.match(home, /Agency Staffing &amp; Resident Transport/);
+  assert.equal((home.match(/class="home-service-detail(?: |")/g) ?? []).length, 6);
+  for (const id of [
+    "supervised-family-access",
+    "supervised-access-transport",
+    "community-outreach",
+    "emergency-outreach",
+    "other-emergency-support",
+    "agency-staffing-transport",
+  ]) assert.match(home, new RegExp(`href="#${id}"`));
+
   const services = pages["/services/"];
   for (const heading of [
     "Supervised Family Access Service",

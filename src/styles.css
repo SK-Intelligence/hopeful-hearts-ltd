@@ -145,7 +145,8 @@ address {
 .agency-coverage-layout > *,
 .compliance-layout > *,
 .agency-contact-layout > *,
-.location-layout > * {
+.location-layout > *,
+.home-service-detail > * {
   min-width: 0;
 }
 
@@ -681,6 +682,99 @@ address {
   display: flex;
   justify-content: flex-end;
   margin-top: 2.5rem;
+}
+
+.home-services-overview {
+  scroll-margin-top: 5.25rem;
+}
+
+.home-service-details {
+  background: var(--paper);
+}
+
+.home-service-detail-list {
+  border-top: 1px solid var(--border);
+}
+
+.home-service-detail {
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2.5rem, 8vw, 7rem);
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 6.5rem;
+}
+
+.home-service-detail-heading h3 {
+  max-width: 20ch;
+  margin-bottom: 1rem;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.home-service-detail-heading > p:last-child {
+  max-width: 37rem;
+  margin-bottom: 0;
+}
+
+.home-service-detail-copy {
+  align-self: center;
+}
+
+.detail-label {
+  margin-bottom: 1rem;
+  color: var(--brand-pink-strong);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.service-detail-points {
+  padding: 0;
+  margin: 0 0 1.65rem;
+  list-style: none;
+}
+
+.service-detail-points li {
+  position: relative;
+  padding: 0.8rem 0 0.8rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.service-detail-points li:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.service-detail-points li::before {
+  position: absolute;
+  top: 1.45rem;
+  left: 0;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-radius: 50%;
+  background: var(--brand-pink);
+  content: "";
+}
+
+.home-service-detail--agency {
+  padding-inline: clamp(1.5rem, 4vw, 4rem);
+  border: 0;
+  border-radius: var(--radius-lg);
+  background: var(--brand-navy-dark);
+}
+
+.home-service-detail--agency h3,
+.home-service-detail--agency .home-service-detail-heading > p:last-child,
+.home-service-detail--agency .service-detail-points li {
+  color: var(--paper);
+}
+
+.home-service-detail--agency .detail-label {
+  color: var(--brand-pink);
+}
+
+.home-service-detail--agency .service-detail-points li {
+  border-color: rgb(255 255 255 / 0.15);
 }
 
 .approach-section {
@@ -1978,7 +2072,8 @@ address {
   .agency-coverage-layout,
   .compliance-layout,
   .agency-contact-layout,
-  .location-layout {
+  .location-layout,
+  .home-service-detail {
     grid-template-columns: 1fr;
   }
 
@@ -2132,6 +2227,14 @@ address {
 
   .agency-contact-layout {
     align-items: start;
+  }
+
+  .home-service-detail {
+    gap: 1.75rem;
+  }
+
+  .home-service-detail--agency {
+    padding: 2.5rem 1.5rem;
   }
 
   .editorial-image-frame::before {
