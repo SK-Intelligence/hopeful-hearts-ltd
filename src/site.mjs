@@ -12,9 +12,9 @@ const contact = {
   availability: "Flexible times, subject to availability",
 };
 
-const mapAddress = encodeURIComponent(contact.address);
-const mapEmbedUrl = `https://www.google.com/maps?q=${mapAddress}&amp;z=15&amp;output=embed`;
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&amp;destination=${mapAddress}&amp;travelmode=driving`;
+const mapDestination = encodeURIComponent("H12 DX93, Ireland");
+const mapEmbedUrl = `https://maps.google.com/maps?hl=en&amp;q=${mapDestination}&amp;z=17&amp;output=embed`;
+const directionsUrl = `https://www.google.com/maps/dir/?api=1&amp;destination=${mapDestination}&amp;travelmode=driving`;
 const whatsappUrl = `https://wa.me/353872779096?text=${encodeURIComponent("Hello Hopeful Hearts, I would like to make an enquiry.")}`;
 
 const navigation = [

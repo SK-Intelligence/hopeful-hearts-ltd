@@ -41,7 +41,11 @@ for (const fact of ["Healthcare Assistants", "Social Care Workers", "Cavan, Mona
 if (!agency.includes("hr@hopefulheartsltd.com") || !agency.includes("+353 83 339 8580")) {
   errors.push("agency services: missing direct agency contact details");
 }
-if (!contact.includes("google.com/maps") || !contact.includes("Get directions")) {
+if (
+  !contact.includes("maps.google.com/maps?hl=en&amp;q=H12%20DX93%2C%20Ireland") ||
+  !contact.includes("destination=H12%20DX93%2C%20Ireland") ||
+  !contact.includes("Get directions")
+) {
   errors.push("contact: missing interactive map or directions link");
 }
 

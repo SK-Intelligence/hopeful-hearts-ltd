@@ -58,7 +58,8 @@ test("agency source content, editorial imagery, location and direct contact acti
   await readFile(join(root, "public/assets/family-connection-dock.jpg"));
 
   const contact = pages["/contact/"];
-  assert.match(contact, /google\.com\/maps/);
+  assert.match(contact, /maps\.google\.com\/maps\?hl=en&amp;q=H12%20DX93%2C%20Ireland&amp;z=17&amp;output=embed/);
+  assert.match(contact, /destination=H12%20DX93%2C%20Ireland/);
   assert.match(contact, /Get directions/);
   for (const html of Object.values(pages)) {
     assert.match(html, /wa\.me\/353872779096/);
